@@ -54,12 +54,13 @@ Installation
 ```
 In Action
 ----------------
-(soon)
+![importir](https://user-images.githubusercontent.com/5761975/31864102-23adb2ea-b782-11e7-98df-ff2033311649.gif)
 
 Todo
 ----------------
 * Handle comment
 * ~~Ignore node_modules, dist, build directories~~
+* Handle / in import, ex: "choo" and "choo/html" should be counted as one
 
 License
 ----
