@@ -58,7 +58,8 @@ In Action
 
 Todo
 ----------------
-* I don't know, give me some suggestions
+* Handle comment
+* ~~Ignore node_modules, dist, build directories~~
 
 License
 ----

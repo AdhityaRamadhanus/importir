@@ -1,13 +1,17 @@
 #!/bin/bash
 
 VERSION=0.0.1
-REQUIRE_REGEX="require\(['\"]\K([a-zA-Z][^'\"/]*)(?=['\"]\))"
-IMPORT_REGEX="import\s(.*)\sfrom\s['\"]\K([a-zA-Z][^'\"/]*)(?=['\"])"
+REQUIRE_REGEX="require\(['\"]\K([a-zA-Z][^'\"]*)(?=['\"]\))"
+IMPORT_REGEX="import\s(.*)\sfrom\s['\"]\K([a-zA-Z][^'\"]*)(?=['\"])"
+IGNORED_DIR=(node_modules dist build)
 
 function get_javascript_files {
   local TARGET_DIR="${1:-.}"
+  for dir in "${IGNORED_DIR[@]}"; do
+    IGNORED_OPTS+=(-not -path "*/${dir}/*")
+  done
   # global var
-  files=($(find $TARGET_DIR -type f -name '*.js'))
+  files=($(find $TARGET_DIR -type f -name '*.js' ${IGNORED_OPTS[@]}))
 }
 
 function get_external_dep {
